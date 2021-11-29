@@ -4,16 +4,16 @@ const placesController = require("../controllers/places-controller");
 const { check } = require("express-validator");
 const router = express.Router();
 
-router.get("/:pid", placesController.getPlacesById);
+router.get("/:pid", placesController.getPlaceById);
 
-router.get("/user/:uid", placesController.getPlaceByUserId);
+router.get("/user/:uid", placesController.getPlacesByUserId);
 
 router.post(
     "/",
     [
         check("title").not().isEmpty(),
         check("description").isLength({ min: 5 }),
-        check("adress").not().isEmpty(),
+        check("address").not().isEmpty(),
     ],
     placesController.createPlace
 );
